@@ -1,3 +1,7 @@
+/*
+ * 10627108 陳文捷 10612150 林詠翔 資訊二甲
+ * UTF-8
+ */
 package hw2;
 
 import java.util.ArrayList;
@@ -8,6 +12,9 @@ public class DotCom {
     public void setLocationCells(ArrayList<String> loc)
     {
         locationCells = loc;
+    private int hitRange;
+    private String hitShout;
+
     }
 
     public String checkYourself(String userInput) {
@@ -28,5 +35,13 @@ public class DotCom {
     private String name;
     public void setName(String string) {
         name = string;
+    }
+
+    public void setHitShout(String msg){
+        hitShout = msg;
+    }
+
+    public void setHitMoveRange(int range){
+        hitRange = range;
     }
 }
