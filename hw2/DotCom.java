@@ -8,7 +8,7 @@ package hw2;
 import java.util.ArrayList;
 
 public class DotCom {
-    private int HaedLocation;
+    private int headLoc;
     private String name;
     private int size;
     private ArrayList<Integer> survivingCells;
@@ -17,17 +17,15 @@ public class DotCom {
     private String hitShout;
     private GameMap map;
 
-    public void setLocation(int loc) { HaedLocation = loc; }
+    public void setLocation(int loc) { headLoc = loc; }
 
     public ArrayList<String> getCells() {
         ArrayList<String> cells = new ArrayList<String>();
         for (int i = 0; i < size; i++) {
             if (northSouth) {
-                cells.add(
-                    map.indexToLocation(HaedLocation + map.xyToIndex(0, i)));
+                cells.add(map.indexToLocation(headLoc + map.xyToIndex(0, i)));
             } else {
-                cells.add(
-                    map.indexToLocation(HaedLocation + map.xyToIndex(i, 0)));
+                cells.add(map.indexToLocation(headLoc + map.xyToIndex(i, 0)));
             }
         }
         return cells;
@@ -39,21 +37,25 @@ public class DotCom {
         for (int i = -hitRange; i <= hitRange; i++) {
             if (i != 0) {
                 // use x or y axis
+                int index;
                 if (northSouth) {
-                    destination.add(HaedLocation + map.xyToIndex(0, i));
+                    index = headLoc + map.xyToIndex(0, i);
                 } else {
-                    destination.add(HaedLocation + map.xyToIndex(i, 0));
+
+                    index = headLoc + map.xyToIndex(1, 0);
+                }
+
+                // check can move destination
+                if (map.canPut(headLoc, size, northSouth)) {
+                    destination.add(index);
                 }
             }
         }
 
-        // check and remove can't move destination
-        map.updateCollisionMap();
-
         // move
         if (!destination.isEmpty()) {
-
-            // setLocation();
+            setLocation(
+                destination.indexOf((int)(Math.random() * destination.size())));
         }
     }
 
