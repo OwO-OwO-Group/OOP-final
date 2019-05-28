@@ -42,7 +42,7 @@ public class DotCom {
                     index = headLoc + map.xyToIndex(0, i);
                 } else {
 
-                    index = headLoc + map.xyToIndex(1, 0);
+                    index = headLoc + map.xyToIndex(i, 0);
                 }
 
                 // check can move destination
