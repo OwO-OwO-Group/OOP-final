@@ -16,9 +16,7 @@ public class DotCom {
     private int hitRange;
     private String hitShout;
 
-    public void setLocation(int loc) {
-        Haedlocation = loc;
-    }
+    public void setLocation(int loc) { Haedlocation = loc; }
 
     private void hitMove() {
         ArrayList<Integer> destination;
@@ -52,15 +50,9 @@ public class DotCom {
         return result;
     }
 
-    public void setName(String string) {
-        name = string;
-    }
+    public void setName(String string) { name = string; }
 
-    public void setHitShout(String msg) {
-        hitShout = msg;
-    }
+    public void setHitShout(String msg) { hitShout = msg; }
 
-    public void setHitMoveRange(int range) {
-        hitRange = range;
-    }
+    public void setHitMoveRange(int range) { hitRange = range; }
 }

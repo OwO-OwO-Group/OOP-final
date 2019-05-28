@@ -6,8 +6,8 @@ package hw2;
 
 public class LargeShip extends DotCom {
     public LargeShip(String nameStr) {
-      super(nameStr, 4);
-      super.setHitShout("SMAcannot find symbolSH!");
-      super.setHitMoveRange(2);
+        super(nameStr, 4);
+        super.setHitShout("SMASH!");
+        super.setHitMoveRange(2);
     }
 }
