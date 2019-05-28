@@ -11,7 +11,7 @@ public class DotCom {
     private int Haedlocation;
     private String name;
     private int size;
-    private ArrayList<int> survivingCells;
+    private ArrayList<Integer> survivingCells;
     private boolean northSouth = false;
     private int hitRange;
     private String hitShout;
@@ -20,8 +20,16 @@ public class DotCom {
         Haedlocation = loc;
     }
 
+    private void hitMove() {
+        ArrayList<Integer> destination;
+        // gen all destination
+        // check and remove can't move destination
 
-    Public Ship(String nameStr, int num){
+        // move
+        // setLocation();
+    }
+
+    public DotCom(String nameStr, int num) {
         size = num;
         name = nameStr;
         hitRange = 0;
@@ -31,10 +39,11 @@ public class DotCom {
     public String checkYourself(String userInput) {
         String result = "miss";
 
-        int index = locationCells.indexOf(userInput);
+        int index = 0; // = locationCells.indexOf(userInput);
         if (index >= 0) {
-            locationCells.remove(index);
-            if (locationCells.isEmpty()) {
+            hitMove();
+            survivingCells.remove(index);
+            if (survivingCells.isEmpty()) {
                 result = "kill";
             } else {
                 result = "hit";
@@ -47,11 +56,11 @@ public class DotCom {
         name = string;
     }
 
-    public void setHitShout(String msg){
+    public void setHitShout(String msg) {
         hitShout = msg;
     }
 
-    public void setHitMoveRange(int range){
+    public void setHitMoveRange(int range) {
         hitRange = range;
     }
 }
