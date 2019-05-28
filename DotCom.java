@@ -7,15 +7,17 @@ package hw2;
 import java.util.ArrayList;
 
 public class DotCom {
-    private ArrayList<String> locationCells;
-    
-    public void setLocationCells(ArrayList<String> loc)
-    {
-        locationCells = loc;
+    private int Haedlocation;
     private String name;
     private int size;
+    private ArrayList<int> survivingCells;
+    private boolean northSouth = false;
     private int hitRange;
     private String hitShout;
+
+    public void setLocation(int loc) {
+        Haedlocation = loc;
+    }
 
 
     Public Ship(String nameStr, int num){
