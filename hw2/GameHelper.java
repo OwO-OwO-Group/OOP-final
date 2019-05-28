@@ -29,10 +29,6 @@ public class GameHelper {
         return inputLine.toLowerCase();
     }
 
-    public int locationToInt(String location) {}
-
-    public int xyToIndex(int x, int y) { return 0; }
-
     public ArrayList<String> placeDotCom(int comSize) { // line 19
         ArrayList<String> alphaCells = new ArrayList<String>();
         String[] alphacoords = new String[comSize]; // holds 'f6' type coords
