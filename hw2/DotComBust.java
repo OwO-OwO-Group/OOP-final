@@ -19,7 +19,6 @@ public class DotComBust {
         map.placeShip(one);
         map.placeShip(two);
         map.placeShip(three);
-
         System.out.println("Your goal is to sink three dot coms.");
         System.out.println("Pets.com, eToys.com, Go2.com");
         System.out.println(
@@ -27,7 +26,9 @@ public class DotComBust {
     }
 
     private void startPlaying() {
-        while (!dotComsList.isEmpty()) {
+        while (!map.isEmpty()) {
+
+            // map.display();
             String userGuess = helper.getUserInput("Enter a guess");
             checkUserGuess(userGuess);
         }
@@ -37,6 +38,7 @@ public class DotComBust {
     private void checkUserGuess(String userGuess) {
         numOfGuesses++;
         String result = "miss";
+        ArrayList<DotCom> dotComsList = map.getShipList();
 
         for (DotCom dotComToTest : dotComsList) {
             result = dotComToTest.checkYourself(userGuess);

@@ -11,13 +11,18 @@ public class DotCom {
     private int headLoc;
     private String name;
     private int size;
-    private ArrayList<Integer> survivingCells;
+    private ArrayList<Integer> survivingCells = new ArrayList<Integer>();
     private boolean northSouth = false;
     private int hitRange;
     private String hitShout;
     private GameMap map;
 
     public void setLocation(int loc) { headLoc = loc; }
+
+    public int getLocation() { return headLoc; }
+    public int getSize() { return size; }
+    public boolean isNorthSouth() { return northSouth; }
+    public void setNorthSouth(boolean is) { northSouth = is; }
 
     public ArrayList<String> getCells() {
         ArrayList<String> cells = new ArrayList<String>();
@@ -28,6 +33,7 @@ public class DotCom {
                 cells.add(map.indexToLocation(headLoc + map.xyToIndex(i, 0)));
             }
         }
+        // System.out.println(cells + " loc:" + headLoc);
         return cells;
     }
 
@@ -41,12 +47,12 @@ public class DotCom {
                 if (northSouth) {
                     index = headLoc + map.xyToIndex(0, i);
                 } else {
-
                     index = headLoc + map.xyToIndex(i, 0);
                 }
 
+                // System.out.println(index);
                 // check can move destination
-                if (map.canPut(headLoc, size, northSouth)) {
+                if (map.canPut(index, size, northSouth, this)) {
                     destination.add(index);
                 }
             }
@@ -54,13 +60,15 @@ public class DotCom {
 
         // move
         if (!destination.isEmpty()) {
-            setLocation(
-                destination.indexOf((int)(Math.random() * destination.size())));
+            setLocation(destination.get(
+                (int)(Math.random() * (destination.size() - 1))));
         }
     }
 
     public DotCom(String nameStr, int num) {
         size = num;
+        for (int i = 0; i < size; i++)
+            survivingCells.add(i);
         name = nameStr;
         hitRange = 0;
         hitShout = "";
@@ -69,9 +77,22 @@ public class DotCom {
     public String checkYourself(String userInput) {
         String result = "miss";
 
-        int index = map.locToIndex(userInput);
-        if (index >= 0) {
+        ArrayList<String> cells = new ArrayList<String>();
+        for (int cell : survivingCells) {
+            if (northSouth) {
+                cells.add(
+                    map.indexToLocation(headLoc + map.xyToIndex(0, cell)));
+            } else {
+                cells.add(
+                    map.indexToLocation(headLoc + map.xyToIndex(cell, 0)));
+            }
+        }
+
+        int index = cells.indexOf(userInput);
+        // System.out.println(cells);
+        if (index != -1) {
             hitMove();
+            // System.out.println(index);
             survivingCells.remove(index);
             if (survivingCells.isEmpty()) {
                 result = "kill";
@@ -79,6 +100,7 @@ public class DotCom {
                 result = "hit";
             }
         }
+
         return result;
     }
 
