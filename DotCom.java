@@ -12,9 +12,17 @@ public class DotCom {
     public void setLocationCells(ArrayList<String> loc)
     {
         locationCells = loc;
+    private String name;
+    private int size;
     private int hitRange;
     private String hitShout;
 
+
+    Public Ship(String nameStr, int num){
+        size = num;
+        name = nameStr;
+        hitRange = 0;
+        hitShout = "";
     }
 
     public String checkYourself(String userInput) {
@@ -32,7 +40,6 @@ public class DotCom {
         return result;
     }
 
-    private String name;
     public void setName(String string) {
         name = string;
     }
