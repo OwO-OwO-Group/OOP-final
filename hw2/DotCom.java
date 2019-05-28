@@ -97,6 +97,7 @@ public class DotCom {
             if (survivingCells.isEmpty()) {
                 result = "kill";
             } else {
+                System.out.println(hitShout);
                 result = "hit";
             }
         }
